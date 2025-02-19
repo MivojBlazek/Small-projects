@@ -6,3 +6,6 @@ class Sentence:
 
     def add_translation_start_pos(self, translation_start_position):
         self.translation_start_position = translation_start_position
+
+    def add_translation(self, translation):
+        self.translation = translation

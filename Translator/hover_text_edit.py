@@ -30,7 +30,7 @@ class HoverTextEdit(QTextEdit):
             extra_selection.format = self.highlighted_format
             self.setExtraSelections([extra_selection])
             if self.second_text_edit:
-                self.second_text_edit.highlight_sentence(sentence_index, not self.is_source)
+                self.second_text_edit.highlight_sentence(sentence_index)
         else:
             self.setExtraSelections([])
             if self.second_text_edit:
@@ -59,19 +59,16 @@ class HoverTextEdit(QTextEdit):
                 sentence_cursor.setPosition(start)
                 sentence_cursor.setPosition(end, QTextCursor.MoveMode.KeepAnchor)
                 return sentence_cursor, index
-            if self.is_source:
-                start = end
-            else:
-                start = end + 1
+            start = end
         return None, None
     
     def update_sentences(self, sentences):
         self.sentences = sentences
 
-    def highlight_sentence(self, index, is_source):
+    def highlight_sentence(self, index):
         if index is not None:
             sentence = self.sentences[index]
-            if is_source:
+            if self.is_source:
                 start = sentence.start_position
                 end = start + len(sentence.text)
             else:
