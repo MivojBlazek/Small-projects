@@ -1,4 +1,5 @@
 from PyQt6.QtWidgets import QPushButton, QTextEdit, QLabel
+from PyQt6.QtGui import QFont, QTextOption
 
 def style_button(button: QPushButton, type: str):
     if type == "main":
@@ -12,6 +13,7 @@ def style_button(button: QPushButton, type: str):
                 font-size: 16px;
                 margin: 4px 2px;
                 border-radius: 8px;
+                font-weight: bold;
             }
             QPushButton:hover {
                 background-color: #45a049;
@@ -29,6 +31,7 @@ def style_button(button: QPushButton, type: str):
                 margin: 4px 2px;
                 border-radius: 8px;
                 max-width: 70px;
+                font-weight: bold;
             }
             QPushButton:hover {
                 background-color: #007bb5;
@@ -45,6 +48,7 @@ def style_button(button: QPushButton, type: str):
                 font-size: 16px;
                 margin: 4px 2px;
                 border-radius: 8px;
+                font-weight: bold;
             }
             QPushButton:hover {
                 background-color: #da190b;
@@ -61,6 +65,7 @@ def style_button(button: QPushButton, type: str):
                 font-size: 16px;
                 margin: 4px 2px;
                 border-radius: 8px;
+                font-weight: bold;
             }
             QPushButton:hover {
                 background-color: #d6d6d6;
@@ -68,14 +73,22 @@ def style_button(button: QPushButton, type: str):
         """)
 
 def style_text_edit(text_edit: QTextEdit):
+    text_edit.setFont(QFont("Roboto", 18))
+    text_edit.setLineWrapMode(QTextEdit.LineWrapMode.WidgetWidth)
+    text_edit.setWordWrapMode(QTextOption.WrapMode.WordWrap)
     text_edit.setStyleSheet("""
         QTextEdit {
-            border: 1px solid #ccc;
-            padding: 10px;
-            font-size: 16px;
+            border: 1px solid #D3D3D3;
+            border-radius: 8px;
+            padding: 12px;
+            background-color: #FAFAFA;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            color: #333333;
+            line-height: 2.0;
         }
     """)
-    
+
 def style_info_text(label: QLabel):
     label.setStyleSheet("""
         QLabel {

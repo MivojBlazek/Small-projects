@@ -9,7 +9,7 @@ class HoverTextEdit(QTextEdit):
         self.second_text_edit = None
         self.setMouseTracking(True)
         self.highlighted_format = QTextCharFormat()
-        
+
         # Choose highlight color
         palette = self.palette()
         if palette.color(QPalette.ColorRole.Window).value() < 128: # Dark mode
@@ -42,7 +42,7 @@ class HoverTextEdit(QTextEdit):
         if self.second_text_edit:
             self.second_text_edit.setExtraSelections([])
         super().leaveEvent(event)
-    
+
     def get_sentence(self, cursor):
         pos = cursor.position()
         start = 0
@@ -61,7 +61,7 @@ class HoverTextEdit(QTextEdit):
                 return sentence_cursor, index
             start = end
         return None, None
-    
+
     def update_sentences(self, sentences):
         self.sentences = sentences
 
