@@ -45,7 +45,7 @@ class TranslatorApp(QWidget):
         self.translate_button.clicked.connect(self.translate_text)
 
         # Remove newlines button
-        self.auto_remove_newlines_button = QPushButton("Remove newlines Disabled", self)
+        self.auto_remove_newlines_button = QPushButton("Fix source text Disabled", self)
         self.auto_remove_newlines_button.setCheckable(True)
         self.auto_remove_newlines_button.setChecked(False)
         self.auto_remove_newlines_button.clicked.connect(self.toggle_auto_remove_newlines)
@@ -217,11 +217,12 @@ class TranslatorApp(QWidget):
 
     def toggle_auto_remove_newlines(self):
         if self.auto_remove_newlines_button.isChecked():
-            self.auto_remove_newlines_button.setText("Remove newlines Enabled")
+            self.auto_remove_newlines_button.setText("Fix source text Enabled")
         else:
-            self.auto_remove_newlines_button.setText("Remove newlines Disabled")
+            self.auto_remove_newlines_button.setText("Fix source text Disabled")
 
     def delete_source_text(self):
+        self.translated_text.clear()
         self.source_text.clear()
         self.source_text.setFocus()
         self.sentences = []
